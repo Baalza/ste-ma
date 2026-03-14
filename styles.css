@@ -791,7 +791,7 @@ section.section[id] {
     width: 28px;
     height: 28px;
     font-size: 0.7rem;
-    box-shadow: 0 0 0 4px rgba(5, 8, 22, 0.96);
+    box-shadow: 0 0 0 4px rgba(5, 8, 22, 0); /*0.96*/
   }
 
   .process-step::after {
