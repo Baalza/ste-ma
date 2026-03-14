@@ -850,8 +850,8 @@ section.section[id] {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 0.7rem 1rem 0.9rem;
-  background: linear-gradient(to top, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.1));
+  padding: 0.7rem 1rem 2rem;
+  background: linear-gradient(to top, rgba(2, 6, 23, 0.96), rgba(2, 6, 23, 0.4));
   font-size: 0.85rem;
   color: var(--color-text-muted);
 }
