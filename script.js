@@ -171,11 +171,51 @@ function initContactForm() {
   });
 }
 
+function initCarousel() {
+  const carousel = document.querySelector('[data-carousel]');
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.carousel-track');
+  const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+  const prevBtn = carousel.querySelector('[data-carousel-prev]');
+  const nextBtn = carousel.querySelector('[data-carousel-next]');
+  const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+
+  if (!track || slides.length === 0) return;
+
+  let index = 0;
+
+  function update() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === index));
+  }
+
+  function goTo(newIndex) {
+    const count = slides.length;
+    index = (newIndex + count) % count;
+    update();
+  }
+
+  prevBtn?.addEventListener('click', () => goTo(index - 1));
+  nextBtn?.addEventListener('click', () => goTo(index + 1));
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const target = Number(dot.getAttribute('data-carousel-dot') || 0);
+      goTo(target);
+    });
+  });
+
+  update();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNavToggle();
   initLanguageSwitcher();
   initRevealOnScroll();
   initContactForm();
+  initCarousel();
   initLanguage();
 });
 
